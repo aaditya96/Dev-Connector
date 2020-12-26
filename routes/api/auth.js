@@ -14,7 +14,7 @@ const router = express.Router();
 const authGet = router.get('/', middlewareAuth, async (req, res) => {
   try {
     const currentUser = await User.findById(req.user.id).select('-password');
-    res.json({ currentUser });
+    res.json(currentUser);
   } catch (err) {
     console.error(err.message);
     res.status(500).json('Internal Server error!');

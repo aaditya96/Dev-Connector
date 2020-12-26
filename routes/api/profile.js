@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const { compareSync } = require('bcryptjs');
 const config = require('config');
 const request = require('request');
+const Post = require('../../models/Post');
 
 const router = express.Router();
 
@@ -31,11 +32,11 @@ router.get('/me', auth, async (req, res) => {
   }
 });
 
-// @route   POST api/profile/me
+// @route   POST api/profile
 // @desc    Profile creation/update route
 // @access  Private
 router.post(
-  '/me',
+  '/',
   [
     auth,
     [
@@ -141,7 +142,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access  Private
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo- remove posts
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
     res.json({ msg: 'Profile deleted!' });

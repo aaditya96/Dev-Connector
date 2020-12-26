@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = function (req, res, next) {
   const jwtToken = req.header('x-auth-token');
   if (!jwtToken) {
-    res.status(401).json({ msg: 'No token present, cannot authorize!' });
+    return res.status(401).json({ msg: 'No token present, cannot authorize!' });
   }
 
   try {
