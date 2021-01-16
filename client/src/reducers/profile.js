@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  REPOS_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -19,6 +20,9 @@ export default function (state = initialState, { type, payload }) {
   switch (type) {
     case PROFILE_ERROR:
       return { ...state, loading: false, error: payload, profile: null };
+
+    case REPOS_ERROR:
+      return { ...state, loading: false, error: payload, repos: [] };
 
     case GET_PROFILES:
       return { ...state, profiles: payload, loading: false };
