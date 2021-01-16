@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://aaditya123:aaditya123@cluster0.wyanr.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "HighConf123",
+  "githubSecret":"a6646fc1e7759c5ee6884d774e10561fd0ce2728",
+  "githubClientId":"4a36444ca485f498c345"
+}
